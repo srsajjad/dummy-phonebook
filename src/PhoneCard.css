@@ -1,0 +1,70 @@
+.flex {
+  display: flex;
+}
+
+.f-column {
+  flex-direction: column;
+}
+
+.f-10 {
+  width: 20%;
+}
+
+.f-60 {
+  width: 50%;
+}
+
+.f-30 {
+  width: 30%;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.t-left {
+  text-align: left;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.phone-card {
+  width: 300px;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+.content .name {
+  margin-bottom: 3px;
+}
+
+.content {
+  overflow: hidden;
+}
+
+.edit {
+  /* margin-bottom: 3px; */
+}
+
+.name {
+  color: black;
+  font-weight: 100;
+}
+
+.phone {
+  color: rgba(81, 79, 79, 0.87);
+}
+
+.edit {
+  cursor: pointer;
+}
+
+.dlt {
+  cursor: pointer;
+}

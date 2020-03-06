@@ -1,0 +1,25 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  border: 3px solid violet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  height: 60vh;
+  max-width: 80%;
+  min-width: 50%;
+}
+
+.input-name {
+  height: 30px;
+  border: 1px solid #cacaca;
+  border-radius: 5px;
+  padding-left: 10px;
+}

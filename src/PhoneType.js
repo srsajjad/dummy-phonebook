@@ -1,0 +1,6 @@
+export const SET_NEW_ITEM = 'SET_NEW_ITEM'
+export const DELETE_ITEM = 'DELETE_ITEM'
+export const UPDATE_ITEM = 'UPDATE_ITEM'
+export const DELETE_SELECTED_ITEMS = 'DELETE_SELECTED_ITEMS'
+export const TOGGLE_CHECKED = 'TOGGLE_CHECKED'
+export const SET_ACTIVE_ID = 'SET_ACTIVE_ID'
