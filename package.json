@@ -15,7 +15,6 @@
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-phone-input-2": "2.12.0",
-    "react-phone-number-input": "3.0.19",
     "react-redux": "7.2.0",
     "react-scripts": "3.0.1",
     "redux": "4.0.5",
