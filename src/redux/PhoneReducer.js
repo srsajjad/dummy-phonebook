@@ -1,5 +1,4 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { v4 as uuidv4 } from 'uuid'
 import * as types from './PhoneType'
 
 const initState = {}
@@ -37,5 +36,10 @@ export const PhoneReducer = createReducer(initState, {
   [types.SET_ACTIVE_ID]: (state, action) => {
     let { id } = action.payload
     state.activeId = id
+  },
+
+  [types.SET_OPEN_DIALOG]: (state, action) => {
+    let { bool } = action.payload
+    state.isDialogOpen = bool
   }
 })

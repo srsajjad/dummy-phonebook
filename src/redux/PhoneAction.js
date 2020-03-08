@@ -29,3 +29,8 @@ export const setActiveId = payload => ({
   type: types.SET_ACTIVE_ID,
   payload
 })
+
+export const setOpenDialog = payload => ({
+  type: types.SET_OPEN_DIALOG,
+  payload
+})

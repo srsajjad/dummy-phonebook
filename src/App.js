@@ -1,67 +1,34 @@
-import React, { useState } from 'react'
-import { AddButton } from './AddButton'
-import { EditDialog } from './EditDialog'
-import CardList from './CardList'
-import DeleteButton from './DeleteButton'
-import { v4 as uuidv4 } from 'uuid'
+import React from 'react'
+import AddButton from './CardList/AddButton'
+import EditDialog from './Dialog/EditDialog'
+import CardList from './CardList/CardList'
+import DeleteButton from './CardList/DeleteButton'
 import './styles.css'
 
 // redux imports
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import logger from 'redux-logger'
-import { PhoneReducer } from './PhoneReducer'
+import { store, persistor } from './redux/store'
 import { Provider } from 'react-redux'
-import ErrorBoundary from './ErrorBoundary'
+import { PersistGate } from 'redux-persist/integration/react'
 
 // Error boundary
-
-let initId = uuidv4()
-
-const reducer = {
-  PhoneReducer: PhoneReducer
-}
-
-const middleware = [...getDefaultMiddleware(), logger]
-
-const preloadedState = {
-  PhoneReducer: {
-    [initId]: {
-      id: initId,
-      firstName: 'SR',
-      lastName: 'Sajjad',
-      phone: '+8801711267372',
-      checked: false
-    }
-  }
-}
-
-const store = configureStore({
-  reducer,
-  middleware,
-  devTools: process.env.NODE_ENV !== 'production',
-  preloadedState
-})
+import ErrorBoundary from './ErrorBoundary'
 
 export default function App () {
-  const [open, setOpen] = useState(false)
-
-  const handleClose = value => {
-    setOpen(false)
-  }
-
   return (
     <Provider store={store}>
-      <ErrorBoundary>
-        <div className='main-root'>
-          <AddButton setOpen={setOpen} />
+      <PersistGate persistor={persistor}>
+        <ErrorBoundary>
+          <div className='main-root'>
+            <AddButton />
 
-          <EditDialog open={open} onClose={handleClose} />
+            <EditDialog />
 
-          <CardList setOpen={setOpen} />
+            <CardList />
 
-          <DeleteButton />
-        </div>
-      </ErrorBoundary>
+            <DeleteButton />
+          </div>
+        </ErrorBoundary>
+      </PersistGate>
     </Provider>
   )
 }

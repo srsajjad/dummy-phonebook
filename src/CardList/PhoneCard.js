@@ -4,7 +4,12 @@ import Paper from '@material-ui/core/Paper'
 import EditIcon from '@material-ui/icons/Edit'
 import ClearIcon from '@material-ui/icons/Clear'
 import { connect } from 'react-redux'
-import { setActiveId, deleteItem, toggleChecked } from './PhoneAction'
+import {
+  setActiveId,
+  deleteItem,
+  toggleChecked,
+  setOpenDialog
+} from '../redux/PhoneAction'
 import './PhoneCard.css'
 
 let PhoneCard = props => {
@@ -13,7 +18,7 @@ let PhoneCard = props => {
     phone,
     id,
     checked,
-    setOpen,
+    setOpenDialog,
     setActiveId,
     deleteItem,
     toggleChecked
@@ -42,7 +47,7 @@ let PhoneCard = props => {
         <div className='edit'>
           <EditIcon
             onClick={() => {
-              setOpen(true)
+              setOpenDialog({ bool: true })
               setActiveId({ id })
             }}
             htmlColor='black'
@@ -57,9 +62,10 @@ let PhoneCard = props => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  setActiveId: id => dispatch(setActiveId(id)),
-  deleteItem: id => dispatch(deleteItem(id)),
-  toggleChecked: id => dispatch(toggleChecked(id))
+  setActiveId: payload => dispatch(setActiveId(payload)),
+  deleteItem: payload => dispatch(deleteItem(payload)),
+  toggleChecked: payload => dispatch(toggleChecked(payload)),
+  setOpenDialog: payload => dispatch(setOpenDialog(payload))
 })
 
 PhoneCard = connect(null, mapDispatchToProps)(PhoneCard)

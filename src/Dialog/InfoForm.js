@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
 import * as Yup from 'yup'
 
-import { updateItem } from './PhoneAction'
+import { updateItem, setOpenDialog } from '../redux/PhoneAction'
 
 // validation schema
 const TestSchema = Yup.object({
@@ -22,7 +22,7 @@ const TestSchema = Yup.object({
 
 function InfoForm (props) {
   // props
-  const { onClose, activeId, state, updateItem } = props
+  const { setOpenDialog, activeId, state, updateItem } = props
 
   // phone hooks
   const [phone, setPhone] = useState(
@@ -41,7 +41,7 @@ function InfoForm (props) {
     }
 
     updateItem(payload)
-    onClose()
+    setOpenDialog({ bool: false })
   }
 
   // inital values
@@ -120,7 +120,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  updateItem: activeId => dispatch(updateItem(activeId))
+  updateItem: payload => dispatch(updateItem(payload)),
+  setOpenDialog: payload => dispatch(setOpenDialog(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(InfoForm)

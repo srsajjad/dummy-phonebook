@@ -1,9 +1,10 @@
 import React from 'react'
 import { PhoneCard } from './PhoneCard'
 import { connect } from 'react-redux'
+import { setOpenDialog } from '../redux/PhoneAction'
 
 const CardList = props => {
-  const { cardList, setOpen } = props
+  const { cardList, setOpenDialog } = props
 
   console.log('card list', cardList)
 
@@ -15,7 +16,7 @@ const CardList = props => {
           id={id}
           firstName={firstName}
           checked={checked}
-          setOpen={setOpen}
+          setOpenDialog={setOpenDialog}
           phone={phone}
         />
       ))}
@@ -27,4 +28,8 @@ const mapStateToProps = state => ({
   cardList: Object.values(state.PhoneReducer).filter(n => !!n.phone)
 })
 
-export default connect(mapStateToProps, null)(CardList)
+const mapDispatchToProps = dispatch => ({
+  setOpenDialog: payload => dispatch(setOpenDialog(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardList)

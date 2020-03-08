@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import AddIcon from '@material-ui/icons/Add'
 import Fab from '@material-ui/core/Fab'
-import { setNewItem, setActiveId } from './PhoneAction'
+import { setNewItem, setActiveId, setOpenDialog } from '../redux/PhoneAction'
 import { v4 as uuidv4 } from 'uuid'
 
 const useStyles = makeStyles(theme => ({
@@ -13,9 +13,9 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-let AddButton = props => {
+const AddButton = props => {
   const { fab } = useStyles()
-  const { setOpen, setNewItem, setActiveId } = props
+  const { setOpenDialog, setNewItem, setActiveId } = props
 
   return (
     <IconButton
@@ -23,7 +23,7 @@ let AddButton = props => {
       aria-label='add'
       onClick={() => {
         let id = uuidv4()
-        setOpen(true)
+        setOpenDialog({ bool: true })
         setNewItem(id)
         setActiveId({ id })
       }}
@@ -47,9 +47,8 @@ const mapDispatchToProps = dispatch => ({
       })
     ),
 
-  setActiveId: payload => dispatch(setActiveId(payload))
+  setActiveId: payload => dispatch(setActiveId(payload)),
+  setOpenDialog: payload => dispatch(setOpenDialog(payload))
 })
 
-AddButton = connect(null, mapDispatchToProps)(AddButton)
-
-export { AddButton }
+export default connect(null, mapDispatchToProps)(AddButton)
